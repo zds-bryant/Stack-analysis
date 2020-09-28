@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;margin: 0;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="thirdlibrary/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- layui -->
+    <link rel="stylesheet" href="thirdlibrary/layui/css/layui.css">
+    <script src="thirdlibrary/layui/layui.js"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- fineUI -->
+    <link rel="stylesheet" type="text/css" href="http://fanruan.design/fineui/2.0/fineui.min.css" />
+    <script src="http://fanruan.design/fineui/2.0/fineui.min.js"></script>
+    <!-- echarts -->
+    <script src="thirdlibrary/echarts/echarts.min.js"></script>
+    <!-- common -->
+    <link rel="stylesheet" href="common/css/common.css">
+    <script src="common/js/common.js"></script>
+    <!-- 状态占比模块 -->
+    <link rel="stylesheet" href="summaryanalysis/summaryanalysis.css">
+    <script src="summaryanalysis/summaryanalysis.js"></script>
+    <!-- 相似堆栈分析模块 -->
+    <link rel="stylesheet" href="samesnippetanalysis/samesnippetanalysis.css">
+    <script src="samesnippetanalysis/samesnippetanalysis.js"></script>
+    <!-- 阻塞分析模块 -->
+    <link rel="stylesheet" href="blocknewanalysis/blocknewanalysis.css">
+    <script src="blocknewanalysis/blocknewanalysis.js"></script>
+    <!-- 线程明细 -->
+    <link rel="stylesheet" href="threadlistanalysis/threadlistanalysis.css">
+    <script src="threadlistanalysis/threadlistanalysis.js"></script>
+    <!-- 健康报告模块 -->
+    <link rel="stylesheet" href="healthanalysis/healthanalysis.css">
+    <script src="healthanalysis/healthanalysis.js"></script>
+</head>
+
+<body style="height: 100%;margin: 0;">
+
+    <div id="wholeBox">
+        <div id="showFileName"></div>
+        <div id="leftBox">
+            <ul class="nav nav-pills nav-stacked">
+                <li id="summaryItem" onclick="refresh('summaryItem',currentProcessName)">
+                    <a class="analysisItems" href="#">状态占比</a>
+                </li>
+                <li id="blockNewItem" onclick="refresh('blockNewItem',currentProcessName)">
+                    <a class="analysisItems" href="#">阻塞分析</a>
+                </li>
+                <li id="sameSnippetItem" onclick="refresh('sameSnippetItem',currentProcessName)">
+                    <a class="analysisItems" href="#">相同片段</a>
+                </li>
+                <li id="threadListItem" onclick="refresh('threadListItem',currentProcessName)">
+                    <a class="analysisItems" href="#">线程明细</a>
+                </li>
+                <li id="healthItem" onclick="refresh('healthItem',currentProcessName)">
+                    <a class="analysisItems" href="#">健康报告</a>
+                </li>
+                <li id="refreshUploadItem" onclick="refreshUploadVeiw()">
+                    <a class="analysisItems" href="#">重新提交新堆栈</a>
+                </li>
+            </ul>
+        </div>
+        <div id="rightBox">
+            <div id="upLoadFileButton" onclick="upLoadFile()">
+                <i class="fa fa-upload" style="font-size: 120px;"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        var sessionId = Date.parse(new Date()) + " " + Math.floor(Math.random() * 1000000);
+        createDB();
+        var upLoadFiles = new Array();
+        var currentAnalysisName = null;
+        var currentProcessName = null;
+        var indexedDBVersion = 2;
+        var loadIndex = null;
+        var threadStateFilter = null;
+        var threadGroupNameFilter = null;
+        var stackPatternFilter = null;
+        //显示在控件上的值
+        var blockFilter = null;
+        //包含的所有线程名称
+        var blockAllThreadFilter = null;
+        //过滤栏控件
+        var filterBarWidget;
+        //状态过滤控件
+        var stateFilterWidget = null;
+        //分组过滤控件
+        var groupFilterWidget = null;
+        //阻塞过滤控件
+        var blockFilterWidget = null;
+        //关键字搜索框
+        var patternFilterWidget = null;
+        //行号相关变量
+        var lineNumber = 1;
+        //input框的旧值
+        var oldPattern = "";
+        //状态占比当前的展示界面
+        var currentStateRatioFlag = 0;
+        //文件拖拽上传
+        $(function() {
+            $(document).on({
+                dragleave: function(e) {
+                    e.preventDefault();
+                },
+                drop: function(e) {
+                    e.preventDefault();
+                },
+                dragenter: function(e) {
+                    e.preventDefault();
+                },
+                dragover: function(e) {
+                    e.preventDefault();
+                }
+            });
+            //拖拽区域 
+            var box = document.getElementById("upLoadFileButton");
+            box.addEventListener("drop", function(e) {
+                e.preventDefault();
+                var file = e.dataTransfer.files[0];
+                if (file.name == currentProcessName) {
+                    return;
+                }
+                var formData = new FormData();
+                formData.append("file", file);
+                postClient(formData, "/uploadFile", upLoadFileCallbackFunction);
+            }, false);
+        });
+        runPreparation();
+    </script>
+
+</body>
+
+</html>

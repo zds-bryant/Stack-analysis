@@ -1,0 +1,174 @@
+#wholeBox {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#showFileName {
+    font-size: 16px;
+    position: absolute;
+    height: 20px;
+    width: 180px;
+    margin: 15px 10px;
+    line-height: 20px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+#showFileName:hover {
+    color: brown;
+    overflow: visible
+}
+
+#leftBox {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 50px 30px 30px 30px;
+    background-color: rgba(0, 0, 0, 0.03);
+    height: 100%;
+}
+
+#refreshUploadItem {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+}
+
+#rightBox {
+    flex-grow: 1;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+#upLoadFileButton {
+    margin: auto;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+#upLoadFileButton:hover {
+    margin: auto;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.upLoadFileButtonDragOver {
+    margin: auto;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#processBar {
+    flex-shrink: 0;
+}
+
+#filterBar {
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 10px 20px;
+}
+
+.findKeyWordButton {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    padding: 0 4px;
+    margin: 0 10px;
+}
+
+.filterLabel {
+    margin: 0 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#filterBar .filterDelete {
+    background-color: transparent;
+    padding: 0 2px;
+}
+
+#filterBar .filterDelete:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#filterBar .filterDelete:active {
+    opacity: 0.5;
+}
+
+#filterBar #stateFilterBox {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    font-size: 10px;
+    line-height: 22px;
+    margin: 0 10px;
+    padding: 0 2px;
+    height: 22px;
+}
+
+#filterBar #groupFilterBox {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    font-size: 10px;
+    line-height: 22px;
+    margin: 0 10px;
+    padding: 0 2px;
+    height: 22px;
+}
+
+#filterBar #blockFilterBox {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    font-size: 10px;
+    line-height: 22px;
+    margin: 0 10px;
+    padding: 0 2px;
+    height: 22px;
+}
+
+#analysisArea {
+    width: 100%;
+    flex-shrink: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#analysisArea #title {
+    text-align: center;
+    font-size: 25px;
+    padding: 20px 0;
+    font-weight: bolder;
+    flex-shrink: 0;
+}
+
+#analysisArea #content {
+    height: 500%;
+    flex-shrink: 1;
+}
+
+.analysisItems {
+    background-color: rgba(0, 0, 0, 0.03);
+    height: 60px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bolder;
+    font-family: Consolas;
+}
+
+
+/* 跳转Panel */
+
+.jumpButton {
+    color: dimgray;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 8px 70px;
+}
+
+.filterInput {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: border-box;
+    box-sizing: content-box;
+}

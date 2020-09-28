@@ -1,0 +1,26 @@
+#healthAnalysis {
+    font-family: Consolas;
+    width: 100%;
+}
+
+#healthAnalysis #reportPanel {
+    margin: 50px 0;
+}
+
+#healthAnalysis #reportPanel .item {
+    font-size: 17px;
+    margin: 0 auto;
+    width: 85%;
+    line-height: 17px;
+    padding: 10px;
+}
+
+#healthAnalysis #reportPanel .stack {
+    font-size: 17px;
+    margin: 0 auto 10px;
+    width: 85%;
+    overflow: auto;
+    line-height: 17px;
+    padding: 10px;
+    white-space: pre;
+}

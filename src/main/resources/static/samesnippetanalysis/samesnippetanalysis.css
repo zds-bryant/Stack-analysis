@@ -1,0 +1,113 @@
+#sameStackAnalysis {
+    font-family: Consolas;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sameStackAnalysis .part {
+    padding: 0 0 40px 0;
+}
+
+#sameStackAnalysis .partHead {
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(0, 100, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-bottom: 0px solid rgba(0, 0, 0, 1);
+}
+
+#sameStackAnalysis .partBody {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+#sameStackAnalysis .partBodyColumn0 {
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px 0 0 10px;
+}
+
+#sameStackAnalysis .partBodyColumn1 {
+    width: 40%;
+    height: 100%;
+    align-items: flex-start;
+}
+
+#sameStackAnalysis .partBodyColumn1Row {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#sameStackAnalysis .partBodyColumn1RowHeader {
+    background-color: rgba(0, 100, 0, 0.1);
+}
+
+#sameStackAnalysis .partBodyColumn1RowThreadName {
+    border-right: 0.3px solid rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 8px;
+}
+
+#sameStackAnalysis .partBodyColumn1RowThreadName:hover {
+    cursor: pointer;
+    background-color: rgba(0, 100, 0, 0.1)
+}
+
+#sameStackAnalysis .partBodyColumn1RowCosDistance {
+    border-right: 0.3px solid rgba(0, 0, 0, 0.3);
+    width: 10%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#sameStackAnalysis .partBodyColumn1RowState {
+    border-right: 0.3px solid rgba(0, 0, 0, 0.3);
+    width: 20%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#comparePanel {
+    font-family: Consolas;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 20, 0.2);
+}
+
+#comparePanel #leftPanel {
+    width: 50%;
+    overflow-x: scroll;
+    margin: 0 10px;
+    white-space: nowrap;
+    background-color: rgb(255, 255, 255);
+}
+
+#comparePanel #rightPanel {
+    width: 50%;
+    overflow-x: scroll;
+    margin: 0 10px;
+    white-space: nowrap;
+    background-color: rgb(255, 255, 255);
+}
+
+#comparePanel .sameSnippet {
+    background-color: rgba(0, 100, 0, 0.3);
+    min-width: max-content;
+    min-width: -webkit-max-content;
+}
+
+#comparePanel .notSameSnippet {}

@@ -1,0 +1,32 @@
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} %-5level %file %line | %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>log/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10mb</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>10gb</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} %-5level %file %line | %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="myLogger" level="info" additivity="false">
+        <appender-ref ref="fileAppender"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

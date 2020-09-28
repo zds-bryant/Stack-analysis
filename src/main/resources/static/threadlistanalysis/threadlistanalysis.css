@@ -1,0 +1,45 @@
+#threadlist {
+    font-family: Consolas;
+    width: 100%;
+    overflow: auto;
+}
+
+#threadlist .threadItem {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.8);
+    padding: 0;
+    white-space: pre;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#threadlist .threadItem .content {
+    display: inline-block;
+    background-color: transparent;
+}
+
+#threadlist .threadItem .lineNumber {
+    width: 50px;
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.keyWordBackgroundColor {
+    background-color: cornflowerblue;
+}
+
+#filterBar .findKeyWordButton {
+    position: absolute;
+    font-size: 18px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+#filterBar .findKeyWordButton:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#filterBar .findKeyWordButton:active {
+    background-color: rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+}
